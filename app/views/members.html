@@ -1,0 +1,22 @@
+<div class="header">
+
+    <section ng-include="'views/navigation.html'" ng-controller="LoginSessionCtrl"></section>
+    <h1 class="title ng-binding">Admin Panel</h1> 
+</div>
+    <section class="page-content">
+        <div class="container">
+            <header class="page-title">
+                <h3>Manage Members</h3>
+            </header>
+           <!-- <p class="info" style="margin-bottom:1.5em !important;">Email inactive members a new invite to download and register to use the app.</p>-->
+            <p class="lead" style="text-align:right;">
+                <a href="#/members/add" class="button button-balanced btn-full-width">Add Member</a> 
+            </p>
+            <div ng-show="pageSuccess" id="pageSuccess"></div>
+            
+            <div ng-show="pageError" id="pageError" class="error" style="text-align:center;"></div>
+            
+            <div class="gridStyle" ng-grid="gridOptions"></div>
+            <p></p>
+        </div>  
+    </section>

@@ -1,0 +1,53 @@
+<div class="header">
+
+    <section ng-include="'views/navigation.html'" ng-controller="LoginSessionCtrl"></section>
+    <h1 class="title ng-binding">Admin Panel</h3> 
+</div>
+    <section class="page-content">
+        <div class="container">
+            <header class="page-title">
+                <h3>My Profile</h3>
+            </header>
+           <!-- <p class="info" style="margin-bottom:1.5em !important;">Email inactive members a new invite to download and register to use the app.</p>-->
+            <form role="form" enctype="multipart/form-data" name="frminvite" novalidate>
+                <div class="form-group">
+                    <p class="lead">
+                        <input type="text" ng-model="profile.username" ng-maxlength="30" ng-trim="true" name="fname" class="form-control" required />
+                        <div ng-messages="frminvite.fname.$error" class="errors">
+                            <span class="error" ng-show="frminvite.fname.$error.required">Required!</span>
+                            <span class="error" ng-show="frminvite.fname.$error.maxlength ">Too Long!</span>
+                        </div>
+                    </p>
+                
+                    <p class="lead">
+                        <input type="email" ng-model="profile.email" placeholder="Email" ng-maxlength="100" ng-trim="true" name="email" class="form-control" required />
+                <div ng-messages="frminvite.email.$dirty && frminvite.email.$invalid" class="errors">
+                    <span class="error" ng-show="frminvite.email.$error.required">Required!</span>
+                    <span class="error" ng-show="frminvite.email.$error.maxlength ">Too Long!</span>
+                    <span class="error" ng-show="frminvite.email.$error.email">Invalid email address.</span>
+                        </div>
+                    </p>
+                    <p class="lead">
+                        <input type="password" name="pwd" ng-model="profile.password" placeholder="Password" ng-maxlength="30" class="form-control" equals="{{profile.cpassword}}" required />
+            <div ng-messages="frminvite.pwd.$error" class="errors">
+                <span class="error" ng-show="frminvite.pwd.$error.required">Required!</span>
+                <span class="error" ng-show="frminvite.pwd.$error.maxlength ">Too Long!</span>
+                       
+                        </div>
+                    </p>
+                    <p class="lead">
+                        <input type="password" name="pwdc" ng-model="profile.cpassword" placeholder="Confirm Password" ng-maxlength="30" class="form-control" equals="{{profile.password}}" required />
+        <div ng-messages="frminvite.pwdc.$error" class="errors">
+            <span class="error" ng-show="frminvite.pwdc.$error.required">Required!</span>
+            <span class="error" ng-show="frminvite.pwdc.$error.equals">Password and confirm password do not match!</span>
+                        </div>
+                    </p>
+                    <p class="success" ng-show="pageSuccess" id="pageSuccess"></p>
+                    <p class="error" ng-show="pageError" id="pageError"></p>
+            </div>
+            <div class="form-group">
+                <button type="button" name="btnSubmit" ng-disabled="!frminvite.$valid" class="btn btn-lg btn-success" ng-click="updateProfile(profile);">Update</button>
+            </div>
+        </form>
+        </div>  
+    </section>

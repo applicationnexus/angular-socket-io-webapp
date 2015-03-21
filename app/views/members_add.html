@@ -1,0 +1,50 @@
+<!--<div class="container"> <form role="form" enctype="multipart/form-data" name="frminvite"> <h1>{{ OrgName }} - Invite Members</h1> <div ng-show="pageError" id="pageError"></div> <div class="row" style="min-height:30px; padding:10px"> <div style="width:40%; float:left">Members Name:</div> <div style="width:60%; float:left"> <input ng-model="invite.name" name="name" class="form-control" id="name" type="text" required> </div> </div> <div style="clear:both"></div> <div class="row" style="min-height:30px; padding:10px"> <div style="width:40%; float:left">Member Email:</div> <div style="width:60%; float:left"> <input ng-model="invite.email" name="email" class="form-control" id="email" type="email" required> </div> </div> <div style="clear:both"></div> <div class="row" style="min-height:30px; padding:10px"> <div style="width:40%; float:left">Invitation short Message:</div> <div style="width:60%; float:left"> <textarea ng-model="invite.message" name="message" class="form-control" id="message" cols="30" rows="10"></textarea> </div> </div> <div style="clear:both"></div> <div class="row" style="min-height:30px; text-align:center; padding:10px"> <input type="button" value="Send Invitation" name="btnSubmit" class="btn btn-primary" ng-click="sendInvite(invite);">&nbsp; <input type="button" value="Back to Members" name="btnSubmit" class="btn btn-primary" ng-click="redirectToList();"> </div> </form> </div>-->
+
+<div class="header">
+
+    <section ng-include="'views/navigation.html'" ng-controller="LoginSessionCtrl"></section>
+    <h3 class="title ng-binding">Admin Panel</h3> 
+</div>
+<section class="page-content">
+    <div class="container">
+        <header class="page-title">
+            <h1>Add new member</h1>
+        </header>     
+        <form role="form" enctype="multipart/form-data" name="frminvite">
+                <div class="form-group">
+                    <p>
+                        <input type="text" ng-model="invite.fname" placeholder="First Name" ng-maxlength="30" ng-trim="true" name="fname" class="form-control" required />
+                    <div ng-messages="frminvite.fname.$error" class="errors">
+                        <span class="error" ng-show="frminvite.fname.$error.required">Required!</span>
+                        <span class="error" ng-show="frminvite.fname.$error.maxlength ">Too Long!</span>
+                    </div>
+                    </p>
+                    <p>
+                        <input type="text" ng-model="invite.lname" placeholder="Last Name" ng-maxlength="30" ng-trim="true" name="lname" class="form-control" required />
+                    <div ng-messages="invite.lname.$error" class="errors">
+                        <span class="error" ng-show="invite.lname.$error.required">Required!</span>
+                        <span class="error" ng-show="invite.lname.$error.maxlength ">Too Long!</span>
+                    </div>
+                    </p>
+                    <p>
+                        <input type="email" ng-model="invite.email" placeholder="Email" ng-maxlength="100" ng-trim="true" name="lname" class="form-control" required />
+                        <div ng-messages="invite.lname.$error" class="errors">
+                            <span class="error" ng-show="invite.lname.$error.required">Required!</span>
+                            <span class="error" ng-show="invite.lname.$error.maxlength ">Too Long!</span>
+                        </div>
+                    </p>
+                    
+
+                    <p class="success" ng-show="pageSuccess" id="pageSuccess"></p>
+                    <p class="error" ng-show="pageError" id="pageError"></p>
+                </div>
+                <div class="form-group">
+                    <button type="button" name="btnSubmit" ng-disabled="!frminvite.$valid" class="btn btn-lg btn-success" ng-click="sendInvite(invite);">Send Invitation</button>
+                </div>
+                 
+            
+            
+        </form>
+    </div>    
+    
+</section>
