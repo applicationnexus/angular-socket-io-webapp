@@ -1,0 +1,29 @@
+<div class="header">
+
+    <!--<section ng-include="'views/navigation.html'" ng-controller="LoginSessionCtrl"></section>-->
+    <h3 class="title ng-binding">Admin Panel</h3> 
+</div>
+<section class="page-content">
+   <div class="container">
+    <form role="form" name="frmLogin" novalidate>
+  <h3>Login</h1>
+  <p></p>
+  <p ng-show="PageError" id="PageError" class="error"></p>
+  <p>
+      <input type="text" ng-model="login.username" placeholder="Username" ng-maxlength="30" ng-trim="true" name="uname" class="form-control" required />
+        <div ng-messages="frmLogin.uname.$error" class="errors">
+            <span class="error" ng-show="frmLogin.uname.$error.required">Required!</span>
+            <span class="error" ng-show="frmLogin.uname.$error.maxlength ">Too Long!</span>
+        </div>
+  </p>
+    <p class="lead">
+        <input type="password" name="pwd" ng-model="login.password" placeholder="Password" ng-maxlength="30" class="form-control" required />
+        <div ng-messages="frmLogin.pwd.$error" class="errors">
+            <span class="error" ng-show="frmLogin.pwd.$error.required">Required!</span>
+            <span class="error" ng-show="frmLogin.pwd.$error.maxlength ">Too Long!</span>
+        </div>
+    </p>
+<p><button class="btn btn-lg btn-success" ng-click="AdminLogin(login);" ng-disabled="frmLogin.$invalid">Login</button></p>
+  </form>
+</div>
+</section>
